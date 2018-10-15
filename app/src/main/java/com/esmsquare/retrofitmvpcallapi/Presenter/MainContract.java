@@ -1,7 +1,7 @@
 package com.esmsquare.retrofitmvpcallapi.Presenter;
 
 
-import com.esmsquare.retrofitmvpcallapi.Model.Notice;
+import com.esmsquare.retrofitmvpcallapi.Model.Movies;
 
 import java.util.ArrayList;
 
@@ -23,7 +23,7 @@ public interface MainContract {
     interface MainView {
         void showProgress();
         void hideProgress();
-        void setDataToRecyclerView(ArrayList<Notice> noticeArrayList);
+        void setDataToRecyclerView(ArrayList<Movies> moviesArrayList);
         void onResponseFailure(Throwable throwable);
 
     }
@@ -34,7 +34,7 @@ public interface MainContract {
     interface GetNoticeIntractor {
 
         interface OnFinishedListener {
-            void onFinished(ArrayList<Notice> noticeArrayList);
+            void onFinished(ArrayList<Movies> moviesArrayList);
             void onFailure(Throwable t);
         }
 

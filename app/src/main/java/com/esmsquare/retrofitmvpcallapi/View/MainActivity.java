@@ -15,9 +15,9 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import com.esmsquare.retrofitmvpcallapi.Adapter.NoticeAdapter;
-import com.esmsquare.retrofitmvpcallapi.DB.GetNoticeIntractorImpl;
-import com.esmsquare.retrofitmvpcallapi.Model.Notice;
+import com.esmsquare.retrofitmvpcallapi.Adapter.MovieAdapter;
+import com.esmsquare.retrofitmvpcallapi.DB.GetMovieIntractorImpl;
+import com.esmsquare.retrofitmvpcallapi.Model.Movies;
 import com.esmsquare.retrofitmvpcallapi.Presenter.MainContract;
 import com.esmsquare.retrofitmvpcallapi.MyInterface.RecyclerItemClickListener;
 import com.esmsquare.retrofitmvpcallapi.Presenter.MainPresenterImpl;
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
         initProgressBar();
 
 
-        presenter = new MainPresenterImpl(this, new GetNoticeIntractorImpl());
+        presenter = new MainPresenterImpl(this, new GetMovieIntractorImpl());
         presenter.requestDataFromServer();
 
     }
@@ -70,10 +70,10 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
 
     private RecyclerItemClickListener recyclerItemClickListener = new RecyclerItemClickListener() {
         @Override
-        public void onItemClick(Notice notice) {
+        public void onItemClick(Movies movies) {
 
             Toast.makeText(MainActivity.this,
-                    "List title:  " + notice.getTitle(),
+                    "List title:  " + movies.getTitle(),
                     Toast.LENGTH_LONG).show();
 
         }
@@ -90,9 +90,9 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
     }
 
     @Override
-    public void setDataToRecyclerView(ArrayList<Notice> noticeArrayList) {
+    public void setDataToRecyclerView(ArrayList<Movies> moviesArrayList) {
 
-        NoticeAdapter adapter = new NoticeAdapter(noticeArrayList , recyclerItemClickListener);
+        MovieAdapter adapter = new MovieAdapter(this,moviesArrayList, recyclerItemClickListener);
         recyclerView.setAdapter(adapter);
 
     }

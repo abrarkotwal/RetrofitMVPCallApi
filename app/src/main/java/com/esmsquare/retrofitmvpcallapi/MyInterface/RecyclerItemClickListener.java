@@ -1,7 +1,7 @@
 package com.esmsquare.retrofitmvpcallapi.MyInterface;
 
-import com.esmsquare.retrofitmvpcallapi.Model.Notice;
+import com.esmsquare.retrofitmvpcallapi.Model.Movies;
 
 public interface RecyclerItemClickListener {
-    void onItemClick(Notice notice);
+    void onItemClick(Movies movies);
 }

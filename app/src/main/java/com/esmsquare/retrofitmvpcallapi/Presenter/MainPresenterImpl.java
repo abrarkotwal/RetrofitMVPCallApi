@@ -1,6 +1,6 @@
 package com.esmsquare.retrofitmvpcallapi.Presenter;
 
-import com.esmsquare.retrofitmvpcallapi.Model.Notice;
+import com.esmsquare.retrofitmvpcallapi.Model.Movies;
 
 
 import java.util.ArrayList;
@@ -39,9 +39,9 @@ public class MainPresenterImpl implements MainContract.Presenter, MainContract.G
 
 
     @Override
-    public void onFinished(ArrayList<Notice> noticeArrayList) {
+    public void onFinished(ArrayList<Movies> moviesArrayList) {
         if(mainView != null){
-            mainView.setDataToRecyclerView(noticeArrayList);
+            mainView.setDataToRecyclerView(moviesArrayList);
             mainView.hideProgress();
         }
     }
