@@ -34,24 +34,18 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
     @Override
     public MovieViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View view = layoutInflater.inflate(R.layout.single_view_row, parent, false);
+        View view = layoutInflater.inflate(R.layout.single_movie_display, parent, false);
         return new MovieViewHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull MovieViewHolder holder, @SuppressLint("RecyclerView") final int position) {
         final Movies currentMovie = moviesList.get(position);
         holder.movieTitle.setText(currentMovie.getTitle());
-        holder.movieReleaseDate.setText(currentMovie.getReleaseDate());
-
-        String checkAdult;
-        if (currentMovie.isAdult()){
-            checkAdult = "(A)";
-        }else {
-            checkAdult = "(U/A)";
-        }
-
-        holder.movieAdault.setText(checkAdult);
+        holder.movieRating.setText("Rating:- "+currentMovie.getVote_average()+"("+currentMovie.getVote_count()+")");
+        holder.movieOverView.setText(currentMovie.getOverview());
+        holder.movieReleaseDate.setText("Release On:- "+currentMovie.getReleaseDate());
 
         Glide.with(context).load("http://image.tmdb.org/t/p/w500/"+currentMovie.getPosterPath()).into(holder.moviePoster);
 
@@ -68,17 +62,18 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.MovieViewHol
         return moviesList.size();
     }
 
-    public static class MovieViewHolder extends RecyclerView.ViewHolder {
+    static class MovieViewHolder extends RecyclerView.ViewHolder {
         ImageView moviePoster;
-        TextView movieTitle,movieReleaseDate,movieAdault;
+        TextView movieTitle,movieReleaseDate,movieOverView,movieRating;
 
 
-        public MovieViewHolder(View itemView) {
+        MovieViewHolder(View itemView) {
             super(itemView);
             moviePoster         =  itemView.findViewById(R.id.moviePoster);
             movieTitle          =  itemView.findViewById(R.id.movieTitle);
             movieReleaseDate    =  itemView.findViewById(R.id.movieReleaseDate);
-            movieAdault         =  itemView.findViewById(R.id.movieAdault);
+            movieOverView       =  itemView.findViewById(R.id.movieOverView);
+            movieRating         =  itemView.findViewById(R.id.movieRating);
         }
     }
 }

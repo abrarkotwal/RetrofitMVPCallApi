@@ -25,7 +25,13 @@ public class Movies {
     @SerializedName("popularity")
     private Double popularity;
 
-    public Movies(String posterPath, boolean adult, String overview, String releaseDate, Integer id, String title, Double popularity) {
+    @SerializedName("vote_average")
+    private float vote_average;
+
+    @SerializedName("vote_count")
+    private int vote_count;
+
+    public Movies(String posterPath, boolean adult, String overview, String releaseDate, Integer id, String title, Double popularity,float vote_average,int vote_count) {
         this.posterPath = posterPath;
         this.adult = adult;
         this.overview = overview;
@@ -92,4 +98,19 @@ public class Movies {
         this.popularity = popularity;
     }
 
+    public float getVote_average() {
+        return vote_average;
+    }
+
+    public void setVote_average(float vote_average) {
+        this.vote_average = vote_average;
+    }
+
+    public int getVote_count() {
+        return vote_count;
+    }
+
+    public void setVote_count(int vote_count) {
+        this.vote_count = vote_count;
+    }
 }
