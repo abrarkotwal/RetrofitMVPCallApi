@@ -19,7 +19,7 @@ public class GetMovieIntractorImpl implements MainContract.GetNoticeIntractor {
         GetMovieDataService service = ApiInstance.getRetrofitInstance().create(GetMovieDataService.class);
 
         /** Call the method with parameter in the interface to get the notice data*/
-        Call<MovieResult> call = service.getNoticeData("b7cd3340a794e5a2f35e3abb820b497f");
+        Call<MovieResult> call = service.getUpcommingMovies("b7cd3340a794e5a2f35e3abb820b497f");
 
         call.enqueue(new Callback<MovieResult>() {
             @Override

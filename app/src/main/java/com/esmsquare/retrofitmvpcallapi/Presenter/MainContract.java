@@ -29,7 +29,7 @@ public interface MainContract {
     }
 
     /**
-     * Intractors are classes built for fetching data from your database, web services, or any other data source.
+     * Interactors are classes built for fetching data from your database, web services, or any other data source.
      **/
     interface GetNoticeIntractor {
 
